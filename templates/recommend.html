@@ -1,0 +1,344 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏推荐</title>
+    <style>
+        body {
+            background-color: #2A475E;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: -20px; /* Adjusted margin for header */
+            margin-top: 30px; /* Adjusted margin for header */
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-items: center;
+            padding: 80px; /* Adjusted padding for better spacing */
+        }
+
+        .game {
+            text-align: center;
+            position: relative; /* Ensure positioning context for shadow */
+            transition: transform 0.3s ease-out; /* Smooth hover effect */
+        }
+
+        .game img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3); /* Added subtle shadow */
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth transitions */
+        }
+
+        .game img:hover {
+            transform: scale(1.1); /* Scale up on hover */
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.4); /* Increase shadow on hover */
+            cursor: pointer;
+        }
+
+        .game p {
+            margin-top: 10px;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="static/image/header.png" alt="" width="1000px">
+    </div>
+    <div class="game-container">
+        <div class="game">
+            <img src="" alt="游戏" id="g11">
+            <p id="g1"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g22">
+            <p id="g2"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g33">
+            <p id="g3"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g44">
+            <p id="g4"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g55">
+            <p id="g5"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g66">
+            <p id="g6"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g77">
+            <p id="g7"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g88">
+            <p id="g8"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g99">
+            <p id="g9"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g100">
+            <p id="g10"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g111">
+            <p id="ggg"></p>
+        </div>
+        <div class="game">
+            <img src="" alt="游戏" id="g112">
+            <p id="g12"></p>
+        </div>
+    </div>
+
+    <div class="container" style="height: 0;width: 0;overflow: hidden;">
+        <div id="selected-tags"></div>
+    </div>
+
+    <script>
+        const tagInfo1 = {
+            "搞笑类": {
+        "img1": "static/newimg/搞笑类1.png",
+        "img2": "static/newimg/搞笑类2.png",
+    "img3": "static/newimg/搞笑类3.png",
+    "img4": "static/newimg/搞笑类4.png",
+        "title1": "疯狂砸汽车",
+        "title2": "动画师和动画3",
+        "title3": "铅笔涂鸦创意动画3",
+        "title4": "动物园恶作剧"
+    },
+  "动作类": {
+        "img1": "static/newimg/动作类1.png",
+        "img2": "static/newimg/动作类2.png",
+    "img3": "static/newimg/动作类3.png",
+    "img4": "static/newimg/动作类4.png",
+        "title1": "游戏明星大乱斗",
+        "title2": "双刃战士",
+        "title3": "火柴人勇者试炼",
+        "title4": "造梦江湖2"
+    },
+  "射击类": {
+        "img1": "static/newimg/射击类1.png",
+        "img2": "static/newimg/射击类2.png",
+    "img3": "static/newimg/射击类3.png",
+    "img4": "static/newimg/射击类4.png",
+        "title1": "大炮色彩毛绒球",
+        "title2": "世界射箭锦标赛",
+        "title3": "愤怒的僵尸",
+        "title4": "炮打愤怒小鸟2"
+    },
+  "体育类": {
+        "img1": "static/newimg/体育类1.png",
+        "img2": "static/newimg/体育类2.png",
+    "img3": "static/newimg/体育类3.png",
+    "img4": "static/newimg/体育类4.png",
+        "title1": "热血篮球赛",
+        "title2": "送货货车",
+        "title3": "狂野飙客6",
+        "title4": "卡哇伊跑酷2无敌版"
+    },
+  "益智类": {
+        "img1": "static/newimg/益智类1.png",
+        "img2": "static/newimg/益智类2.png",
+    "img3": "static/newimg/益智类3.png",
+    "img4": "static/newimg/益智类4.png",
+        "title1": "亚当找夏娃3",
+        "title2": "帮鸟儿解冻3",
+        "title3": "装载卡车4",
+        "title4": "青蛙祖玛"
+    },
+    "冒险类": {
+        "img1": "static/newimg/冒险类1.png",
+        "img2": "static/newimg/冒险类2.png",
+    "img3": "static/newimg/冒险类3.png",
+    "img4": "static/newimg/冒险类4.png",
+        "title1": "粘液实验室2",
+        "title2": "屁王兄弟无敌版",
+        "title3": "钢铁蜘蛛侠",
+        "title4": "植物大战僵尸2"
+    },
+    "棋牌类": {
+        "img1": "static/newimg/棋牌类1.png",
+        "img2": "static/newimg/棋牌类2.png",
+    "img3": "static/newimg/棋牌类3.png",
+    "img4": "static/newimg/棋牌类4.png",
+        "title1": "水晶跳棋",
+        "title2": "接龙牌",
+        "title3": "中国象棋残局",
+        "title4": "开心飞行棋"
+    },
+ "策略类": {
+        "img1": "static/newimg/策略类1.png",
+        "img2": "static/newimg/策略类2.png",
+    "img3": "static/newimg/策略类3.png",
+    "img4": "static/newimg策略类4.png",
+        "title1": "怪物突围",
+        "title2": "少侠来修仙",
+        "title3": "超级米拉奇战记",
+        "title4": "怪物卡牌"
+   },
+ "综合类": {
+        "img1": "static/newimg/综合类1.png",
+        "img2": "static/newimg/综合类2.png",
+        "img3": "static/newimg/综合类3.png",
+       "img4": "static/newimg/综合类4.png",
+        "title1": "金庸群侠传2无敌版",
+        "title2": "武林外传同福奇缘无敌版",
+        "title3": "魔幻迷宮",
+        "title4": "死神的试练2正式版"
+    },
+ "敏捷篇": {
+        "img1": "static/newimg/敏捷篇1.png",
+        "img2": "static/newimg/敏捷篇2.png",
+         "img3": "static/newimg/敏捷篇3.png",
+        "img4": "static/newimg/敏捷篇4.png",
+        "title1": "爆发的小火山",
+        "title2": "阿sue人鱼公主",
+        "title3": "乐高巡警抓小偷",
+        "title4": "愤怒的老奶奶玩酷跑1.8无版"
+    },
+ "休闲类": {
+        "img1": "static/newimg/休闲类1.png",
+        "img2": "static/newimg/休闲类2.png",
+        "img3": "static/newimg/休闲类3.png",
+        "img4": "static/newimg/休闲类4.png",
+        "title1": "美味意大利面",
+        "title2": "精美婚纱设计",
+        "title3": "水果武士",
+        "title4": "大头妹找钥匙"
+    },
+ "儿童类": {
+        "img1": "static/newimg/儿童类1.png",
+        "img2": "static/newimg/儿童类2.png",
+        "img3": "static/newimg/儿童类3.png",
+        "img4": "static/newimg/儿童类4.png",
+        "title1": "公主和王子爱情拼图",
+        "title2": "快乐七巧板",
+        "title3": "蜡笔小新护牙行动",
+        "title4": "猜儿歌"
+    },
+ "测试类": {
+        "img1": "static/newimg/测试类1.png",
+        "img2": "static/newimg/测试类2.png",
+    "img3": "static/newimg/测试类3.png",
+    "img4": "static/newimg/测试类4.png",
+        "title1": "梦想中的房子",
+        "title2": "阿sue爱情测试",
+        "title3": "十二生肖测试",
+        "title4": "百变甜心公主中文版"
+    },
+"装扮类": {
+        "img1": "static/newimg/装扮类1.png",
+        "img2": "static/newimg/装扮类2.png",
+    "img3": "static/newimg/装扮类3.png",
+    "img4": "static/newimg/装扮类4.png",
+        "title1": "婚礼发型师",
+        "title2": "美容美发",
+        "title3": "暖暖的换装世界2",
+        "title4": "小马驹露娜"
+    },
+"模拟经营": {
+        "img1": "static/newimg/模拟经营1.png",
+        "img2": "static/newimg/模拟经营2.png",
+    "img3": "static/newimg/模拟经营3.png",
+    "img4": "static/newimg/模拟经营4.png",
+        "title1": "海绵宝宝蟹堡王",
+        "title2": "我的煎饼摊",
+        "title3": "经营农场无敌版",
+        "title4": "空闲农场"
+    }
+        }
+
+        function getQueryParams() {
+        const params = {};
+        window.location.search.substr(1).split('&').forEach(pair => {
+            const [key, value] = pair.split('=');
+            params[key] = decodeURIComponent(value);
+        });
+        return params;
+    }
+   
+    
+    
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = getQueryParams();
+        let selectedTagsArray = [];
+        if (params.tags) {
+            selectedTagsArray = params.tags.split(',');
+            const selectedTagsContainer = document.getElementById('selected-tags');
+            selectedTagsContainer.innerHTML = selectedTagsArray.map(tag => `<div class="tag">${tag}</div>`).join('');
+        }
+      
+        if (selectedTagsArray.length > 0) {
+          const tag = selectedTagsArray[0];
+          if (tagInfo1[tag]) {
+             const info1 = tagInfo1[tag];
+             document.getElementById("g1").innerText = info1.title1;
+             document.getElementById("g2").innerText = info1.title2;
+             document.getElementById("g3").innerText = info1.title3;
+             document.getElementById("g4").innerText = info1.title4;
+             document.getElementById("g11").src = info1.img1;
+             document.getElementById("g22").src = info1.img2;
+             document.getElementById("g33").src = info1.img3;
+             document.getElementById("g44").src = info1.img4;
+        }
+    }
+
+        if (selectedTagsArray.length > 0) {
+          const tag = selectedTagsArray[1];
+          if (tagInfo1[tag]) {
+             const info1 = tagInfo1[tag];
+             document.getElementById("g5").innerText = info1.title1;
+             document.getElementById("g6").innerText = info1.title2;
+             document.getElementById("g7").innerText = info1.title3;
+             document.getElementById("g8").innerText = info1.title4;
+             document.getElementById("g55").src = info1.img1;
+             document.getElementById("g66").src = info1.img2;
+             document.getElementById("g77").src = info1.img3;
+             document.getElementById("g88").src = info1.img4;
+        }
+       }
+
+       if (selectedTagsArray.length > 0) {
+          const tag = selectedTagsArray[2];
+          if (tagInfo1[tag]) {
+             const info1 = tagInfo1[tag];
+             document.getElementById("g9").innerText =  info1.title1;
+             document.getElementById("g10").innerText = info1.title2;
+             document.getElementById("ggg").innerText = info1.title3;
+             document.getElementById("g12").innerText = info1.title4;
+             document.getElementById("g99").src = info1.img1;
+             document.getElementById("g100").src = info1.img2;
+             document.getElementById("g111").src = info1.img3;
+             document.getElementById("g112").src = info1.img4;
+        }
+       }
+    });
+    </script>
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择标签</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+
+        .container {
+            height: 600px;
+            width: 800px;
+            background: #ffffff;
+            background-color: #fff5f3;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            overflow: hidden; /* 以防标签动画超出容器 */
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .tags {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .tag {
+            padding: 10px 20px;
+            height: 40px;
+            width: 100px;
+            line-height: 40px;
+            margin-top: 30px;
+            margin-left: 20px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(100px);
+            animation: bubbleUp 0.8s forwards;
+        }
+
+        @keyframes bubbleUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tag:nth-child(1) { animation-delay: 0.1s; }
+        .tag:nth-child(2) { animation-delay: 0.2s; }
+        .tag:nth-child(3) { animation-delay: 0.3s; }
+        .tag:nth-child(4) { animation-delay: 0.4s; }
+        .tag:nth-child(5) { animation-delay: 0.5s; }
+        .tag:nth-child(6) { animation-delay: 0.6s; }
+        .tag:nth-child(7) { animation-delay: 0.7s; }
+        .tag:nth-child(8) { animation-delay: 0.8s; }
+        .tag:nth-child(9) { animation-delay: 0.9s; }
+        .tag:nth-child(10) { animation-delay: 1s; }
+        .tag:nth-child(11) { animation-delay: 1.1s; }
+        .tag:nth-child(12) { animation-delay: 1.2s; }
+        .tag:nth-child(13) { animation-delay: 1.3s; }
+        .tag:nth-child(14) { animation-delay: 1.4s; }
+        .tag:nth-child(15) { animation-delay: 1.5s; }
+
+        .tag:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 18px 36px rgba(0, 0, 0, 0.3);
+        }
+
+        .tag.selected {
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+        }
+
+        .submit-btn {
+            margin-top: 60px;
+            line-height: 40px;
+            width: 100px;
+            height: 40px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.2);
+            position: relative;
+            left: 340px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 18px 36px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">请选择您的偏好</div>
+        <div class="tags">
+            <div class="tag">搞笑类</div>
+            <div class="tag">休闲类</div>
+            <div class="tag">动作类</div>
+            <div class="tag">儿童类</div>
+            <div class="tag">体育类</div>
+            <div class="tag">测试类</div>
+            <div class="tag">射击类</div>
+            <div class="tag">装扮类</div>
+            <div class="tag">益智类</div>
+            <div class="tag">模拟经营</div>
+            <div class="tag">冒险类</div>
+            <div class="tag">棋牌类</div>
+            <div class="tag">策略类</div>
+            <div class="tag">综合类</div>
+            <div class="tag">敏捷篇</div>
+        </div>
+        <div class="submit-btn"><a href="#" style="text-decoration: none; color: white;">提交</a></div>
+    </div>
+
+    <script>
+        const tags = document.querySelectorAll('.tag');
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.classList.toggle('selected');
+            });
+        });
+
+        const submitBtn = document.querySelector('.submit-btn a');
+        submitBtn.addEventListener('click', () => {
+            const selectedTags = [];
+            tags.forEach(tag => {
+                if (tag.classList.contains('selected')) {
+                    selectedTags.push(tag.textContent);
+                }
+            });
+
+            // 将选中的标签传递到 test.html 页面
+            const selectedTagsString = selectedTags.join(',');
+            window.location.href = `test.html?tags=${encodeURIComponent(selectedTagsString)}`;
+        });
+    </script>
+</body>
+</html>

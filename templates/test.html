@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Animation</title>
+    <script>
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tags = urlParams.get('tags');
+            
+            // 延迟 2 秒后重定向到 index.html 并传递标签数据
+            setTimeout(() => {
+                window.location.href = `index.html?tags=${encodeURIComponent(tags)}`;
+            }, 2000);
+        });
+    </script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .loader-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: #f2f2f2;
+            position: relative;
+        }
+        
+        .loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .loader .circle {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 50%;
+            background: #3498db;
+            animation: bounce 2s infinite;
+        }
+        
+        .loader .circle:nth-child(2) {
+            animation-delay: 1s;
+        }
+        
+        .loader .circle:nth-child(3) {
+            animation-delay: 2s;
+        }
+        
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+        
+        .progress-bar-container {
+            width: 80%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: absolute;
+            bottom: 20%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: #3498db;
+            border-radius: 10px;
+            transition: width 3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .moving-image {
+            position: absolute;
+            top: 470px; /* Adjust to position the image above the progress bar */
+            left: 0;
+            animation: moveWithBar 3s ease forwards;
+        }
+        
+        @keyframes moveWithBar {
+            0% {
+                left: 100px;
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                left: calc(80% - 60px); /* Adjust the end position based on progress bar width */
+                opacity: 0;
+                left: 1050px;
+            }
+        }
+        
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar">
+            </div>
+        </div>
+        <img src="static/picture/shit.png" alt="Loading Icon" class="moving-image" width="120px" height="80px"> <!-- Replace with your image URL -->
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = '100%';
+
+            setTimeout(() => {
+                document.querySelector('.loader-container').style.display = 'none';
+                window.location.href = 'index.html'; // Redirect to index.html
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

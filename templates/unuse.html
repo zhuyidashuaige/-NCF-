@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>奇思妙想游戏推荐</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon 
+     发送
+     window.addEventListener('load', () => {
+    const rankingLink = document.getElementById('rankingLink');
+
+    rankingLink.addEventListener('click', (event) => {
+        event.preventDefault(); // 阻止默认的链接行为，即不进行原本的页面跳转
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const tags = urlParams.get('tags');
+
+        window.location.href = `E:VScode项目/大数据编程/rubish.html?tags=${encodeURIComponent(tags)}`;
+    });
+});
+		</script>
+		<div class="wrapper">
+			<a href="#" id="rankingLink" style="position: absolute ;left: 570px;top: 566px;z-index: 100;"><img src="img/score.png" alt="" height="50px" width="130px"></a>
+    
+    
+    接收
+        <div class="container">
+        <div id="selected-tags"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tags = urlParams.get('tags');
+            const selectedTagsContainer = document.getElementById('selected-tags');
+            selectedTagsContainer.textContent = decodeURIComponent(tags);
+        });
+    </script>
+    
+    
+    
+    
+    
+    Icon -->
+</head>
+<body style="background: url('static/image/bj1.png') no-repeat center center fixed; background-size: cover;">
+    <a href="unuse.html">评分排行榜</a>
+
+    <div class="container">
+        <div id="selected-tags"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tags = urlParams.get('tags');
+            const selectedTagsContainer = document.getElementById('selected-tags');
+            selectedTagsContainer.textContent = decodeURIComponent(tags);
+        });
+    </script>
+</body>
+</html>
