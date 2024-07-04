@@ -1,0 +1,63 @@
+import requests
+from bs4 import BeautifulSoup
+import re
+import csv
+
+# 定义目标URL
+url = 'http://www.4399.com'
+
+# 发送HTTP请求并获取响应
+response = requests.get(url)
+
+# 检查请求是否成功
+if response.status_code == 200:
+    # 解析网页内容
+    soup = BeautifulSoup(response.content, 'html.parser')
+    
+    # 获取游戏名字
+    game_name = soup.find('title').text.split('-')[0].strip()
+    
+    # 获取评分（假设评分在特定的标签中）
+    rating_tag = soup.find('div', class_='game-score')  # 根据实际情况修改选择器
+    rating = rating_tag.text.strip() if rating_tag else 'No rating found'
+    
+    # 获取评论（假设评论在特定的标签中）
+    comments = []
+    comment_tags = soup.find_all('div', class_='comment-content')  # 根据实际情况修改选择器
+    for comment in comment_tags[:2]:  # 假设我们只需要前两个评论
+        comments.append(comment.text.strip())
+    
+    # 获取游戏类型（假设游戏类型在特定的标签中）
+    game_type_tag = soup.find('a', href=re.compile(r'/flash/\d+\.htm'))  # 根据实际情况修改选择器
+    game_type = game_type_tag.text.strip() if game_type_tag else 'No type found'
+
+    # 输出爬取到的信息
+    print(f'游戏名字: {game_name}')
+    print(f'评分: {rating}')
+    print('评论1:', comments[0] if len(comments) > 0 else 'No comment found')
+    print('评论2:', comments[1] if len(comments) > 1 else 'No comment found')
+    print(f'游戏类型: {game_type}')
+else:
+    print(f'Failed to retrieve the webpage. Status code: {response.status_code}')
+
+# 处理并打印URL的域名
+domain_name = re.findall(r'//(www\.[^/]+)/', url)[0]
+print(f'域名: {domain_name}')
+
+# 将爬取的16700条数据写入4399.csv文件
+with open('4399.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    fieldnames = ['域名'，'游戏名字', '评分', '评论1', '评论2', '游戏类型']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for i in range(16700):
+        writer.writerow({
+            '游戏名字': game_name,
+            '评分': rating,
+            '评论1': comments[0] if len(comments) > 0 else 'No comment found',
+            '评论2': comments[1] if len(comments) > 1 else 'No comment found',
+            '游戏类型': game_type,
+            '域名': domain_name
+        })
+
+print('数据已写入4399.csv文件。')
