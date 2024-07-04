@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Layout</title>
+<style>
+  .review-container {
+    width: 600px;
+    height: 290px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1B2838;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    left: 290px;
+  }
+  .review-header {
+    display: flex;
+    align-items: center;
+  }
+  .review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .review-user-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rui1{
+    color: rgb(128, 162, 179);
+    font-weight:700;
+    font-size: 17px;
+  }
+  .review-content {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgb(198, 198, 198);
+  }
+  .review-footer {
+    border-top: 1px solid #4C687C; /* 暗灰色横线 */
+    margin-top: 10px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .review-footer .actions {
+            display: flex;
+            align-items: center;
+        }
+        .review-footer .actions button {
+            margin-left: 10px;
+            background-color: #2A475E;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .review-footer .actions button:hover, 
+        .review-footer .actions button.clicked {
+            background-color: #4C687C;
+        }
+        .review-footer .actions .thumb-up::before {
+            content: '👍';
+            margin-right: 5px;
+        }
+        .review-footer .actions .thumb-down::before {
+            content: '👎';
+            margin-right: 5px;
+        }
+        .review-footer .actions .fun::before {
+            content: '😂';
+            margin-right: 5px;
+        }
+        .review-footer .actions .award::before {
+            content: '🏆';
+            margin-right: 5px;
+            color: gold;
+        }
+        .gamelog{
+            border-radius: 38px;
+            margin-left: 40px;
+            margin-top: 25px;
+        }
+        .gamename{
+            height: 40px;
+            width: 200px;
+            font-weight: 700;
+            margin-left: 30px;
+            font-size: 20px;
+            text-align:center;
+            line-height: 40px;
+            color: rgb(230, 230, 230);
+        }
+        .gamestar{
+            height: 40px;
+            width: 180px;
+            font-weight: 700;
+            margin-left: 40px;
+            margin-top: 10px;
+            font-size: 20px;
+            text-align:center;
+            line-height: 40px;
+           
+            background-color: rgb(97, 191, 118);
+            border-radius: 5px;
+            
+        }
+        .gamestar:hover{
+            background-color: rgb(110, 212, 132);
+            cursor: pointer;
+        }
+        .star-rating .star {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .star-rating .star.filled {
+            color: gold;
+        }
+        .star-rating1 .star {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star-rating1 .star.filled {
+            color: gold;
+        }
+        .star-rating2 .star {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star-rating2 .star.filled {
+            color: gold;
+        }
+        .star-rating3 .star {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star-rating3 .star.filled {
+            color: gold;
+        }
+        .star-rating4 .star {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star-rating4 .star.filled {
+            color: gold;
+        }
+        .star-rating5 .star {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star-rating5 .star.filled {
+            color: gold;
+        }
+ 
+.feedback-submit {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.feedback-submit .submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2A475E;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.feedback-submit .submit-button:hover {
+    background-color: #4C687C;
+}
+.feedback-submit1 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .feedback-submit1 .submit-button1 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2A475E;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-submit1 .submit-button1:hover {
+            background-color: #4C687C;
+        }
+
+        .feedback-submit2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .feedback-submit2 .submit-button2 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2A475E;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-submit2 .submit-button2:hover {
+            background-color: #4C687C;
+        }
+
+        .feedback-submit3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .feedback-submit3 .submit-button3 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2A475E;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-submit3 .submit-button3:hover {
+            background-color: #4C687C;
+        }
+
+        .feedback-submit4 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .feedback-submit4 .submit-button4 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2A475E;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-submit4 .submit-button4:hover {
+            background-color: #4C687C;
+        }
+        .feedback-submit5 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .feedback-submit5 .submit-button5 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2A475E;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-submit5 .submit-button5:hover {
+            background-color: #4C687C;
+        }
+.custom-border{
+    position: relative;height: 340px;width: 1264px;}
+.custom-border::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 37px;
+            width: 94.7%; /* 设置下边框的长度，例如 50% */
+            border-bottom: 2px solid rgb(202, 202, 202); /* 设置下边框的样式和颜色 */
+        }
+        
+        #main-content {
+            z-index: 1;
+        }
+
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .loader {
+            border: 8px solid rgba(243, 243, 243, 0.3);
+            border-top: 8px solid #ffffff;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loading-overlay p {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
+            animation: fadeIn 1.5s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        #main-content {
+            height: 50px;
+            width: 130px;
+            position: relative;
+            left: 560px;
+            bottom: 50px;
+            border-radius: 5px;
+            background-color: #2A475E;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #main-content:hover {
+            background-color: white;
+            color: #5782a5;
+        }
+        #start-button{
+            text-decoration: none;
+            color: white;
+        }
+        #start-button:hover{
+            color: #5782a5;
+        }
+</style>
+</head>
+<body style="background:  
+url('static/image/bj1.png') no-repeat center center fixed;
+background-size: cover;width: 1280px;height: 2150px;margin: 0 auto;">
+     <!-- 1 --------------------------------------------------- project -->
+    <div class="custom-border" >
+
+   <div  class="game" style="height: 320.5px;width: 255px;
+    background-color: #1B2838;;position: absolute;left: 36px;
+    top: 20px;">
+        <img id="g11" src="" alt="" class="gamelog" height="180px" width="180px">
+        <div class="gamename" id="g1"></div>
+        <div class="gamestar"><a href="https://www.4399.com/" style="text-decoration: none; color: rgb(255, 255, 255);">开 始 试 玩</a></div>
+   </div>
+    <div class="review-container">
+        <div class="review-header">
+          <img id="random-image" src="static/picture/益智.png" alt="avatar" class="review-avatar">
+          <div class="review-user-info">
+            <span class="rui1" id="username">Nymeia</span>
+            <span style="color: rgb(128, 162, 179); font-size: 12px;">帐户内拥有 <span id="product-count">167</span> 项产品</span>
+            <span style="color: rgb(128, 162, 179); font-size: 12px;"><span id="review-count">18</span> 篇评测</span>
+          </div>
+        </div>
+        <div class="review-content" id="h1">
+                  </div>
+        <div class="review-footer">
+          <span style="color: rgb(198, 198, 198);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这篇评测是否有价值？</span>
+          <div class="actions" >
+            <button class="thumb-up">是</button>
+            <button class="thumb-down">否</button>
+            <button class="fun">欢乐</button>
+            <button class="award">奖励</button>
+          </div>
+        </div>
+    </div>
+    <div class="game" style="height: 300.5px; width: 304px; background-color: #1B2838; position: absolute; right: 30px; top: 20px; overflow: hidden;padding-top: 20px;">
+        <textarea class="feedback-text" placeholder="请输入您的评论..." style="width: 260px; height: 150px; padding: 10px; border-radius: 5px; border: none; resize: none; background-color: #1f3044; color: white;"></textarea>
+        <div class="star-rating" style="margin: 10px 0;margin-left: 78px;">
+            <span class="star" data-value="1">&#9734;</span>
+            <span class="star" data-value="2">&#9734;</span>
+            <span class="star" data-value="3">&#9734;</span>
+            <span class="star" data-value="4">&#9734;</span>
+            <span class="star" data-value="5">&#9734;</span>
+        </div>
+        <div class="feedback-submit">
+            <a href="#" class="submit-button">提 交 反 馈</a>
+        </div>
+    </div>
+  </div>
+  <script>
+   
+    const usernames = [
+    "一锦轻舟素北鸳", "1冰冷的刀", "好人运气好", "风田日何向", "4399樱{花}", "3527255621", 
+    "令＆库洛米", "魅力无限~", "永远的孩子つ", "L轰神", "静海思远", "天才宅妹小涵", 
+    "激萌又哲学盒饭awc", "凝鸿信雪晴", "辛垣念凡良哲", "勤奋又温柔的盒2qra", "仰力", 
+    "薄梦清飞凉", "炒炒炒板栗", "風雪情", "梦过方知是客", "pvztale-红豆杉", 
+    "『咖啡店是老板娘』", "函治宛秋诗桃", "海东青~~", "知安daytoy", "Yi.梦", 
+    "魂飞九霄", "望月—", "最爱奇犽", "小可爱",
+    '青柠衬酸', '还未如愿', '打碎面具', '我又不是星星发什么光', '橘柚香', 
+    '谁敢勾我夫我必让她哭', '六句迷人诗', 'ζ蔚蓝°', '___向日葵╮微笑', '可乐丶不渴', 
+    'ˇ起颩るㄝ', '爱你如初', '今世我陪你白发苍苍', '心亡泪凉っ', '漓殇う', 
+    '顏夕の未歌', '自娱自乐自我闹っ', '给劳资TMD滚！', '萌妹子不装萌>。ヘ', '猫贪余温', 
+    '莫道红颜依何处', '中二癌晚期少年', '情话是骗子说傻子听的゛', '此籹子不需要谁来怜惜', 
+    '超级无敌小机智', '我不上你的当', '化蝶灬飞', '踏花游湖', '久孤', '余生长醉', 
+    '中毒的爱情', '肆无忌惮゛戒情戒爱づ', '九耀星璇', '不及眉间朱砂尽', '不规则的美╮', 
+    '范二姑涼歡樂多°', '巴黎铁塔上盛开的繁华*', '你的她貌美如狗~', '珊瑚是深海的記憶ㄟ', 
+    '陌上﹏烟雨瑶', '感情最狗', '仙女提刀战情场', '只是小伤口用时间包扎', '抹茶少女', 
+    '住在白日梦里的小情人', '娇呻喘息', '感情废物', '岛屿失梦', '南幕影歇', 
+    '你的帅气只配我拥有！', '梦屿千寻', '非洲小白脸', '南北段子手', '凌云児', 
+    '天哭蓝了海°', '半面妆', '諟菈洣蘇', '泪不是爲你而流', '木落雁南度', '蓝天下有微笑', 
+    '霸气外泄', '淡淡の花香', '闭上眼睛', '灬夏恋海边', '素颜醉倾城', '晚街听风', 
+    '好景不长', '草长莺飞', '古雪娃', '放下屠刀抱抱我', '樱花很美仅有瞬间', '﹂季錵落', 
+    '半根烟闯江湖', '天国佳人', '蠢与纯与唇。', '执笔梦一场', '那抹斜阳我们的记忆', 
+    '绿水染清风', '乖囧猫', '方蕊', '万事无关我', '真心不如红钞票', '林空鹿饮溪', 
+    '小小怪同学', '一腔孤勇和余生', '千世的冰封', '﹏`眸子里的哀伤', '情话烫心', 
+    '做我怀中猫', '粗音大瑜叔', '迷人的线条', '没再流泪', '名称被猫叼ε=走了', 
+    '绿水染清风', '°半心半城半回忆っ', '强颜欢笑', '请止步禁区。', '墨染青衣颜', 
+    '毒魂泪', '-背着书包闯天下', '为沵丶诠释爱', '暮白寒窗雪', '楠笙几梦', '奺稚', 
+    '关于小熊关于你', '薄情°', '姑娘长的好罪过', '耐不住得寂寞', '潇湘夜雨', '仅留一丝空白﹏', 
+    '衣服能换新'
+];
+    const randomUsername = usernames[Math.floor(Math.random() * usernames.length)];
+  
+ 
+    const randomProductCount = Math.floor(Math.random() * 100) + 1;
+    const randomReviewCount = Math.floor(Math.random() * 100) + 1;
+  
+   
+    document.getElementById('username').textContent = randomUsername;
+    document.getElementById('product-count').textContent = randomProductCount;
+    document.getElementById('review-count').textContent = randomReviewCount;
+  </script>
+  <script>
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function setRandomImage() {
+        const randomNumber =  getRandomInt(2657, 2760);
+        const randomNumber1 = getRandomInt(2657, 2760);
+        const randomNumber2 = getRandomInt(2657, 2760);
+        const randomNumber3 = getRandomInt(2657, 2760);
+        const randomNumber4 = getRandomInt(2657, 2760);
+        const randomNumber5 = getRandomInt(2657, 2760);
+        const imagePath = `static/toux/toux${randomNumber}.png`;
+        const imagePath1 = `static/toux/toux${randomNumber1}.png`;
+        const imagePath2 = `static/toux/toux${randomNumber2}.png`;
+        const imagePath3 = `static/toux/toux${randomNumber3}.png`;
+        const imagePath4 = `static/toux/toux${randomNumber4}.png`;
+        const imagePath5 = `static/toux/toux${randomNumber5}.png`;
+        document.getElementById('random-image').src = imagePath;
+        document.getElementById('random-image1').src = imagePath1;
+        document.getElementById('random-image2').src = imagePath2;
+        document.getElementById('random-image3').src = imagePath3;
+        document.getElementById('random-image4').src = imagePath4;
+        document.getElementById('random-image5').src = imagePath5;
+    }
+    window.onload = setRandomImage;
+</script>
+
+<script>
+    // 星星评分功能
+    const stars1 = document.querySelectorAll('.star-rating .star');
+    stars1.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating1 = this.getAttribute('data-value');
+            stars1.forEach(s => {
+                if (s.getAttribute('data-value') <= rating1) {
+                    s.innerHTML = '&#9733;'; // 实心星星
+                    s.classList.add('filled');
+                } else {
+                    s.innerHTML = '&#9734;'; // 空心星星
+                    s.classList.remove('filled');
+                }
+            });
+        });
+    });
+    const submitButton = document.querySelector('.feedback-submit .submit-button');
+     submitButton.addEventListener('click', function(event) {
+         event.preventDefault();
+         alert('感谢您的反馈！');
+     });
+     
+
+</script>
+<script>
+    // 获取所有按钮
+    const buttons = document.querySelectorAll('button');
+    // 为每个按钮添加点击事件
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 移除所有按钮的 clicked 类
+            buttons.forEach(btn => btn.classList.remove('clicked'));
+            // 为当前点击的按钮添加 clicked 类
+            this.classList.add('clicked');
+        });
+    });
+</script>
+  
+
+     <!-- 2 --------------------------------------------------- project -->
+     <div class="custom-border" style="top: -19px;">
+
+        <div  class="game" style="height: 320.5px;width: 255px;
+         background-color: #1B2838;;position: absolute;left: 36px;
+         top: 20px;">
+             <img id="g22" src="" alt="" class="gamelog" height="180px" width="180px">
+             <div class="gamename" id="g2"></div>
+             <div class="gamestar"><a href="https://www.4399.com/" style="text-decoration: none; color: rgb(255, 255, 255);">开 始 试 玩</a></div>
+        </div>
+         <div class="review-container">
+             <div class="review-header">
+               <img id="random-image1" src="static/picture/益智类1.png" alt="avatar" class="review-avatar">
+               <div class="review-user-info">
+                 <span class="rui1" id="username1">Nymeia</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;">帐户内拥有 <span id="product-count1">167</span> 项产品</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;"><span id="review-count1">18</span> 篇评测</span>
+               </div>
+             </div>
+             <div class="review-content" id="h2">
+             </div>
+             <div class="review-footer">
+               <span style="color: rgb(198, 198, 198);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这篇评测是否有价值？</span>
+               <div class="actions" >
+                 <button class="thumb-up">是</button>
+                 <button class="thumb-down">否</button>
+                 <button class="fun">欢乐</button>
+                 <button class="award">奖励</button>
+               </div>
+             </div>
+         </div>
+         <div class="game" style="height: 300.5px; width: 304px; background-color: #1B2838; position: absolute; right: 30px; top: 20px; overflow: hidden;padding-top: 20px;">
+             <textarea class="feedback-text" placeholder="请输入您的评论..." style="width: 260px; height: 150px; padding: 10px; border-radius: 5px; border: none; resize: none; background-color: #1f3044; color: white;"></textarea>
+             <div class="star-rating1" style="margin: 10px 0;margin-left: 78px;">
+                 <span class="star" data-value="1">&#9734;</span>
+                 <span class="star" data-value="2">&#9734;</span>
+                 <span class="star" data-value="3">&#9734;</span>
+                 <span class="star" data-value="4">&#9734;</span>
+                 <span class="star" data-value="5">&#9734;</span>
+             </div>
+             <div class="feedback-submit1">
+                 <a href="#" class="submit-button1">提 交 反 馈</a>
+             </div>
+         </div>
+       </div>
+       <script>
+     
+
+    const randomUsername1 = usernames[Math.floor(Math.random() * usernames.length)];
+  
+   
+    const randomProductCount1 = Math.floor(Math.random() * 100) + 1;
+    const randomReviewCount1 = Math.floor(Math.random() * 100) + 1;
+     
+         document.getElementById('username1').textContent = randomUsername1;
+         document.getElementById('product-count1').textContent = randomProductCount1;
+         document.getElementById('review-count1').textContent = randomReviewCount1;
+       </script>
+       <script>
+         function getRandomInt(min, max) {
+             min = Math.ceil(min);
+             max = Math.floor(max);
+             return Math.floor(Math.random() * (max - min + 1)) + min;
+         }
+     
+
+     </script>
+
+     <script>
+         // 星星评分功能
+         const stars = document.querySelectorAll('.star-rating1 .star');
+         stars.forEach(star => {
+             star.addEventListener('click', function() {
+                 const rating = this.getAttribute('data-value');
+                 stars.forEach(s => {
+                     if (s.getAttribute('data-value') <= rating) {
+                         s.innerHTML = '&#9733;'; // 实心星星
+                         s.classList.add('filled');
+                     } else {
+                         s.innerHTML = '&#9734;'; // 空心星星
+                         s.classList.remove('filled');
+                     }
+                 });
+             });
+         });
+     // 提交反馈按钮功能
+     const submitButton1 = document.querySelector('.feedback-submit1 .submit-button1');
+     submitButton1.addEventListener('click', function(event) {
+         event.preventDefault();
+         alert('感谢您的反馈！');
+     });
+     
+     </script>
+
+
+
+     <!-- 3 --------------------------------------------------- project -->
+     <div class="custom-border" style="top: -38px;">
+
+        <div  class="game" style="height: 320.5px;width: 255px;
+         background-color: #1B2838;;position: absolute;left: 36px;
+         top: 20px;">
+             <img id="g33" src="" alt="" class="gamelog" height="180px" width="180px">
+             <div class="gamename" id="g3"></div>
+             <div class="gamestar"><a href="https://www.4399.com/" style="text-decoration: none; color: rgb(255, 255, 255);">开 始 试 玩</a></div>
+        </div>
+         <div class="review-container">
+             <div class="review-header">
+               <img id="random-image2" src="static/picture/益智类1.png" alt="avatar" class="review-avatar">
+               <div class="review-user-info">
+                 <span class="rui1" id="username2">Nymeia</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;">帐户内拥有 <span id="product-count2">167</span> 项产品</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;"><span id="review-count2">18</span> 篇评测</span>
+               </div>
+             </div>
+             <div class="review-content" id="h3">
+             </div>
+             <div class="review-footer">
+               <span style="color: rgb(198, 198, 198);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这篇评测是否有价值？</span>
+               <div class="actions" >
+                 <button class="thumb-up">是</button>
+                 <button class="thumb-down">否</button>
+                 <button class="fun">欢乐</button>
+                 <button class="award">奖励</button>
+               </div>
+             </div>
+         </div>
+         <div class="game" style="height: 300.5px; width: 304px; background-color: #1B2838; position: absolute; right: 30px; top: 20px; overflow: hidden;padding-top: 20px;">
+             <textarea class="feedback-text" placeholder="请输入您的评论..." style="width: 260px; height: 150px; padding: 10px; border-radius: 5px; border: none; resize: none; background-color: #1f3044; color: white;"></textarea>
+             <div class="star-rating2" style="margin: 10px 0;margin-left: 78px;">
+                 <span class="star" data-value="1">&#9734;</span>
+                 <span class="star" data-value="2">&#9734;</span>
+                 <span class="star" data-value="3">&#9734;</span>
+                 <span class="star" data-value="4">&#9734;</span>
+                 <span class="star" data-value="5">&#9734;</span>
+             </div>
+             <div class="feedback-submit2">
+                 <a href="#" class="submit-button2">提 交 反 馈</a>
+             </div>
+         </div>
+       </div>
+       <script>
+
+
+    const randomUsername2 = usernames[Math.floor(Math.random() * usernames.length)];
+
+    const randomProductCount2 = Math.floor(Math.random() * 100) + 1;
+    const randomReviewCount2 = Math.floor(Math.random() * 100) + 1;
+        
+         document.getElementById('username2').textContent = randomUsername2;
+         document.getElementById('product-count2').textContent = randomProductCount2;
+         document.getElementById('review-count2').textContent = randomReviewCount2;
+       </script>
+       <script>
+         function getRandomInt(min, max) {
+             min = Math.ceil(min);
+             max = Math.floor(max);
+             return Math.floor(Math.random() * (max - min + 1)) + min;
+         }
+     
+
+     </script>
+
+     <script>
+         // 星星评分功能
+         const stars2 = document.querySelectorAll('.star-rating2 .star');
+         stars2.forEach(star => {
+             star.addEventListener('click', function() {
+                 const rating2 = this.getAttribute('data-value');
+                 stars2.forEach(s => {
+                     if (s.getAttribute('data-value') <= rating2) {
+                         s.innerHTML = '&#9733;'; // 实心星星
+                         s.classList.add('filled');
+                     } else {
+                         s.innerHTML = '&#9734;'; // 空心星星
+                         s.classList.remove('filled');
+                     }
+                 });
+             });
+         });
+     // 提交反馈按钮功能
+     const submitButton2 = document.querySelector('.feedback-submit2 .submit-button2');
+     submitButton2.addEventListener('click', function(event) {
+         event.preventDefault();
+         alert('感谢您的反馈！');
+     });
+     
+     </script>
+
+
+
+
+
+
+     <!-- 4 --------------------------------------------------- project -->
+     <div class="custom-border" style="top: -57px;">
+
+        <div  class="game" style="height: 320.5px;width: 255px;
+         background-color: #1B2838;;position: absolute;left: 36px;
+         top: 20px;">
+             <img src="" id="g44" alt="" class="gamelog" height="180px" width="180px">
+             <div class="gamename" id="g4"></div>
+             <div class="gamestar"><a href="https://www.4399.com/" style="text-decoration: none; color: rgb(255, 255, 255);">开 始 试 玩</a></div>
+        </div>
+         <div class="review-container">
+             <div class="review-header">
+               <img id="random-image3" src="static/picture/益智类1.png" alt="avatar" class="review-avatar">
+               <div class="review-user-info">
+                 <span class="rui1" id="username3">Nymeia</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;">帐户内拥有 <span id="product-count3">167</span> 项产品</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;"><span id="review-count3">18</span> 篇评测</span>
+               </div>
+             </div>
+             <div class="review-content" id="h4">
+             </div>
+             <div class="review-footer">
+               <span style="color: rgb(198, 198, 198);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这篇评测是否有价值？</span>
+               <div class="actions" >
+                 <button class="thumb-up">是</button>
+                 <button class="thumb-down">否</button>
+                 <button class="fun">欢乐</button>
+                 <button class="award">奖励</button>
+               </div>
+             </div>
+         </div>
+         <div class="game" style="height: 300.5px; width: 304px; background-color: #1B2838; position: absolute; right: 30px; top: 20px; overflow: hidden;padding-top: 20px;">
+             <textarea class="feedback-text" placeholder="请输入您的评论..." style="width: 260px; height: 150px; padding: 10px; border-radius: 5px; border: none; resize: none; background-color: #1f3044; color: white;"></textarea>
+             <div class="star-rating3" style="margin: 10px 0;margin-left: 78px;">
+                 <span class="star" data-value="1">&#9734;</span>
+                 <span class="star" data-value="2">&#9734;</span>
+                 <span class="star" data-value="3">&#9734;</span>
+                 <span class="star" data-value="4">&#9734;</span>
+                 <span class="star" data-value="5">&#9734;</span>
+             </div>
+             <div          class="feedback-submit3">
+                 <a href="#" class="submit-button3">提 交 反 馈</a>
+             </div>
+         </div>
+       </div>
+       <script>
+         
+
+    const randomUsername3 = usernames[Math.floor(Math.random() * usernames.length)];
+  
+  
+    const randomProductCount3 = Math.floor(Math.random() * 100) + 1;
+    const randomReviewCount3 = Math.floor(Math.random() * 100) + 1;
+       
+         document.getElementById(     'username3').textContent =     randomUsername3;
+         document.getElementById('product-count3').textContent = randomProductCount3;
+         document.getElementById( 'review-count3').textContent =  randomReviewCount3;
+       </script>
+       <script>
+         function getRandomInt(min, max) {
+             min = Math.ceil(min);
+             max = Math.floor(max);
+             return Math.floor(Math.random() * (max - min + 1)) + min;
+         }
+     
+
+     </script>
+
+     <script>
+         // 星星评分功能
+         const stars3 = document.querySelectorAll('.star-rating3 .star');
+         stars3.forEach(star => {
+             star.addEventListener('click', function() {
+                 const rating3 = this.getAttribute('data-value');
+                 stars3.forEach(s => {
+                     if (s.getAttribute('data-value') <= rating3) {
+                         s.innerHTML = '&#9733;'; // 实心星星
+                         s.classList.add('filled');
+                     } else {
+                         s.innerHTML = '&#9734;'; // 空心星星
+                         s.classList.remove('filled');
+                     }
+                 });
+             });
+         });
+     // 提交反馈按钮功能
+     const submitButton3 = document.querySelector('.feedback-submit3 .submit-button3');
+           submitButton3.addEventListener('click', function(event) {
+         event.preventDefault();
+         alert('感谢您的反馈！');
+     });
+     
+     </script>
+
+
+
+
+
+    <!-- 5 --------------------------------------------------- project -->
+    <div class="custom-border" style="top: -76px;">
+
+        <div  class="game" style="height: 320.5px;width: 255px;
+         background-color: #1B2838;;position: absolute;left: 36px;
+         top: 20px;">
+             <img src="" id="g55" alt="" class="gamelog" height="180px" width="180px">
+             <div class="gamename" id="g5"></div>
+             <div class="gamestar"><a href="https://www.4399.com/" style="text-decoration: none; color: rgb(255, 255, 255);">开 始 试 玩</a></div>
+        </div>
+         <div class="review-container">
+             <div class="review-header">
+               <img id="random-image4" src="static/picture/益智类1.png" alt="avatar" class="review-avatar">
+               <div class="review-user-info">
+                 <span class="rui1" id="username4">Nymeia</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;">帐户内拥有 <span id="product-count4">167</span> 项产品</span>
+                 <span style="color: rgb(128, 162, 179); font-size: 12px;"><span id="review-count4">18</span> 篇评测</span>
+               </div>
+             </div>
+             <div class="review-content" id="h5">
+             </div>
+             <div class="review-footer">
+               <span style="color: rgb(198, 198, 198);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这篇评测是否有价值？</span>
+               <div class="actions" >
+                 <button class="thumb-up">是</button>
+                 <button class="thumb-down">否</button>
+                 <button class="fun">欢乐</button>
+                 <button class="award">奖励</button>
+               </div>
+             </div>
+         </div>
+         <div class="game" style="height: 300.5px; width: 304px; background-color: #1B2838; position: absolute; right: 30px; top: 20px; overflow: hidden;padding-top: 20px;">
+             <textarea class="feedback-text" placeholder="请输入您的评论..." style="width: 260px; height: 150px; padding: 10px; border-radius: 5px; border: none; resize: none; background-color: #1f3044; color: white;"></textarea>
+             <div class="star-rating4" style="margin: 10px 0;margin-left: 78px;">
+                 <span class="star" data-value="1">&#9734;</span>
+                 <span class="star" data-value="2">&#9734;</span>
+                 <span class="star" data-value="3">&#9734;</span>
+                 <span class="star" data-value="4">&#9734;</span>
+                 <span class="star" data-value="5">&#9734;</span>
+             </div>
+             <div          class="feedback-submit4">
+                 <a href="#" class="submit-button4">提 交 反 馈</a>
+             </div>
+         </div>
+       </div>
+       <script>
+ 
+
+    const randomUsername4 = usernames[Math.floor(Math.random() * usernames.length)];
+  
+   
+    const randomProductCount4 = Math.floor(Math.random() * 100) + 1;
+    const  randomReviewCount4 = Math.floor(Math.random() * 100) + 1;
+     
+         document.getElementById(     'username4').textContent =     randomUsername4;
+         document.getElementById('product-count4').textContent = randomProductCount4;
+         document.getElementById( 'review-count4').textContent =  randomReviewCount4;
+       </script>
+       <script>
+         function getRandomInt(min, max) {
+             min = Math.ceil(min);
+             max = Math.floor(max);
+             return Math.floor(Math.random() * (max - min + 1)) + min;
+         }
+     
+
+     </script>
+
+     <script>
+         // 星星评分功能
+         const stars4 = document.querySelectorAll('.star-rating4 .star');
+         stars4.forEach(star => {
+             star.addEventListener('click', function() {
+                 const rating4 = this.getAttribute('data-value');
+                 stars4.forEach(s => {
+                     if (s.getAttribute('data-value') <= rating4) {
+                         s.innerHTML = '&#9733;'; // 实心星星
+                         s.classList.add('filled');
+                     } else {
+                         s.innerHTML = '&#9734;'; // 空心星星
+                         s.classList.remove('filled');
+                     }
+                 });
+             });
+         });
+     // 提交反馈按钮功能
+     const submitButton4 = document.querySelector('.feedback-submit4 .submit-button4');
+           submitButton4.addEventListener('click', function(event) {
+         event.preventDefault();
+         alert('感谢您的反馈！');
+     });
+     
+     </script>
+
+
+
+
+
+   <!--6 --------------------------------------------------- project -->
+   <div class="custom-border" style="top: -95px;">
+
+    <div  class="game" style="height: 320.5px;width: 255px;
+     background-color: #1B2838;;position: absolute;left: 36px;
+     top: 20px;">
+         <img src="" id="g66" alt="" class="gamelog" height="180px" width="180px">
+         <div class="gamename" id="g6"></div>
+         <div class="gamestar"><a href="https://www.4399.com/" style="text-decoration: none; color: rgb(255, 255, 255);">开 始 试 玩</a></div>
+    </div>
+     <div class="review-container">
+         <div class="review-header">
+           <img id="random-image5" src="static/picture/益智类1.png" alt="avatar" class="review-avatar">
+           <div class="review-user-info">
+             <span class="rui1" id="username5">Nymeia</span>
+             <span style="color: rgb(128, 162, 179); font-size: 12px;">帐户内拥有 <span id="product-count5">167</span> 项产品</span>
+             <span style="color: rgb(128, 162, 179); font-size: 12px;"><span id="review-count5">18</span> 篇评测</span>
+           </div>
+         </div>
+         <div class="review-content" id="h6">
+         </div>
+         <div class="review-footer">
+           <span style="color: rgb(198, 198, 198);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这篇评测是否有价值？</span>
+           <div class="actions" >
+             <button class="thumb-up">是</button>
+             <button class="thumb-down">否</button>
+             <button class="fun">欢乐</button>
+             <button class="award">奖励</button>
+           </div>
+         </div>
+     </div>
+     <div class="game" style="height: 300.5px; width: 304px; background-color: #1B2838; position: absolute; right: 30px; top: 20px; overflow: hidden;padding-top: 20px;">
+         <textarea class="feedback-text" placeholder="请输入您的评论..." style="width: 260px; height: 150px; padding: 10px; border-radius: 5px; border: none; resize: none; background-color: #1f3044; color: white;"></textarea>
+         <div class="star-rating5" style="margin: 10px 0;margin-left: 78px;">
+             <span class="star" data-value="1">&#9734;</span>
+             <span class="star" data-value="2">&#9734;</span>
+             <span class="star" data-value="3">&#9734;</span>
+             <span class="star" data-value="4">&#9734;</span>
+             <span class="star" data-value="5">&#9734;</span>
+         </div>
+         <div          class="feedback-submit5">
+             <a href="#" class="submit-button5">提 交 反 馈</a>
+         </div>
+     </div>
+   </div>
+   <script>
+
+const randomUsername5 = usernames[Math.floor(Math.random() * usernames.length)];
+
+const randomProductCount5 = Math.floor(Math.random() * 100) + 1;
+const  randomReviewCount5 = Math.floor(Math.random() * 100) + 1;
+     document.getElementById(     'username5').textContent =     randomUsername5;
+     document.getElementById('product-count5').textContent = randomProductCount5;
+     document.getElementById( 'review-count5').textContent =  randomReviewCount5;
+   </script>
+   <script>
+     function getRandomInt(min, max) {
+         min = Math.ceil(min);
+         max = Math.floor(max);
+         return Math.floor(Math.random() * (max - min + 1)) + min;
+     }
+ 
+
+ </script>
+
+ <script>
+     // 星星评分功能
+     const stars5 = document.querySelectorAll('.star-rating5 .star');
+     stars5.forEach(star => {
+         star.addEventListener('click', function() {
+             const rating5 = this.getAttribute('data-value');
+             stars5.forEach(s => {
+                 if (s.getAttribute('data-value') <= rating5) {
+                     s.innerHTML = '&#9733;'; // 实心星星
+                     s.classList.add('filled');
+                 } else {
+                     s.innerHTML = '&#9734;'; // 空心星星
+                     s.classList.remove('filled');
+                 }
+             });
+         });
+     });
+ // 提交反馈按钮功能
+ const submitButton5 = document.querySelector('.feedback-submit5 .submit-button5');
+       submitButton5.addEventListener('click', function(event) {
+     event.preventDefault();
+     alert('感谢您的反馈！');
+ });
+ 
+ </script>
+
+
+
+
+
+<div class="container">
+    <div id="selected-tags"></div>
+</div>
+
+
+
+
+<script>
+    function getQueryParams() {
+        const params = {};
+        window.location.search.substr(1).split('&').forEach(pair => {
+            const [key, value] = pair.split('=');
+            params[key] = decodeURIComponent(value);
+        });
+        return params;
+    }
+   
+    
+    const tagInfo1 = {
+    "体育类": {
+        "img1": "static/picture/体育类1.png",
+        "img2": "static/picture/体育类2.png",
+        "title1": "双人旋转赛车",
+        "title2": "3D双人极速飙车",
+	"h1":"这是一款非常好玩的赛车驾驶类游戏，整个游戏的场景都是像素打造的，在这里玩家们可以感受最刺激的崎岖赛道玩法，赛车达到一定的速度就可以爬墙倒挂，游戏分为单双人两种模式，每种模式都是15个关卡，游戏操作非常简单，因为游戏中的设定你在达到一定速度时就可以沿着强倒挂骑行，可以摆脱重力的作用，当然无论你是选着单双人模式都是有对手玩家一起竞争的，这个游戏的难度不是在于地图上的关卡障碍物有多少难的陷阱，而是在于对手，游戏中的障碍物都是很好通过和躲避的，但是你要跑完地图就必须要有一定的速度冲刺才可以爬墙倒挂，对手就很容易在赛道上阻碍你，这边说个小技巧，我们可以利用好赛道上的阻碍物，可以快速跳跃用来阻挡在你身后的对手，这样就可以摆脱他们，轻轻松松的倒挂骑行，游戏中的地图方向也需要注意，很多弯弯绕绕我也走了好几次的冤枉路。",
+	"h2":"真的就是说特别喜欢这种可以双人一起玩的小游戏了。我本身是属于那种很菜但是又特别爱玩的人。在三次元时，真的就是一直不敢学开车，本身自己胆子比较小（呜呜呜┻┳|･ω･)）在这里我就不一样了哦，大杀四方暂无敌手哈哈哈！友情提示，真的开全屏更有感觉！想要快速通关的秘诀最主要的就是不要碰撞到游戏里随机出现的那些障碍车辆和其他障碍物之类的，因为碰到那些障碍之类的话，我们玩家的车辆就会被迫降速！话说要是车辆可以进行更多的跟换颜色或者车型就更棒了啊喂！大家快叫上自己的小伙伴们来一场刺激的飙车比赛吧（现实生活中可不允许飙车哦！遵守交规才是好同志嘛~）"
+    },
+    "射击类": {
+        "img1": "static/picture/射击类1.png",
+        "img2": "static/picture/射击类2.png",
+        "title1": "坦克动荡2",
+        "title2": "战火英雄无敌版",
+	"h1":"动荡坦克2作为一款经典的小游戏，其最大的特点就是可以供三个人同时玩，通关的方法是消灭所有出现的敌人并且保护住自己家的堡垒。第二部里面加入了很多不同的坦克还有飞行器类型的武器，这使得游戏玩法更丰富了在选择武器的界面对每一款的武器都有详细的介绍，坦克的攻击力射速以及最重要的是否可以击穿物体，可否对空等特殊功能，这个很重要；个人建议选择威力大一点的类型武器，这样会便于自己把握和敌人交叉的时机来摧毁敌人，至于是否需要对空武器要看关卡的敌人是包括哪些类型，游戏还是比较适合多人一起玩，玩双人和三人模式会比较有意思点。总的来说是一款不错的游戏，推荐大家来玩。",
+	"h2":"战火英雄这游戏是我一直都挺喜欢玩的小游戏，游戏整体来说还是不错的。游戏中有三个模式可以玩，分别为campaign(战役模式) challenge(挑战模式) quick match(比赛模式)，每个模式都有独特的玩法。战役模式是一个闯关游戏，完成关卡任务就能通关。挑战模式也是闯关卡，但是会比较困难。想要挑战性的可以玩这个模式。而比赛模式是我最喜欢玩的一个模式，我们可以召集队友跟地方进行对战。游戏中的武器枪械也是很多的，肯定能找到自己喜欢的武器。最爽的是这个版本是无敌版，东西都可以随便购买，人物在关卡里面也不用怕死，可以秀各种操作。哈哈~"
+    },
+    "测试类": {
+        "img1": "static/picture/测试类1.png",
+        "img2": "static/picture/测试类2.png",
+        "title1": "测你的古代身份",
+        "title2": "未来身份测试",
+	"h1":"测了三次，第一次就跟你一样，然后我想：哇哈哈我是属虎但我不是有胆有识，却胆小如鼠；我不是不苟小节；而是马马虎虎；我做是不是雷厉风行，而是退后。第二次我是嫔妃，但我并非满意：我认为嫔妃虽然是皇上的妃子，又过着衣食无忧的生活，但是她时刻可能会遭受丫鬟、樱妃、雪妃、贤妃、太子、太子妃、公主、驸马、皇贵妃、贵妃、皇帝、皇后、太皇和太后的陷害；与其衣食无忧的生活对比，时刻遭受许多人的陷害又有何用？就算发现了，上等人又说一句话就能使人信任，而自己仅仅是一个小小卑职而已。最后一次我是宫中之主，我终于满意了。因为一宫之主即可旨令一人，而别人的命运也可以由自己决定，还有许多工人来侍候，又能不听别人的话，多么幸福美满的生活！太奈斯了",
+	"h2":"昊昊果然是最帅的！每个测试都充满了挑战性和趣味性，让人在轻松愉快的氛围中思考自己的未来可能性！！！哈哈哈哈，我太喜欢这个结果了，我要开始幻想了，哈哈哈哈，长翅膀的亿万富翁，今晚我就要在梦里自由飞翔~"
+    },
+    "装扮类": {
+        "img1": "static/picture/装扮类1.png",
+        "img2": "static/picture/装扮类2.png",
+        "title1": "冰淇淋蛋糕店",
+        "title2": "阿Sue化妆2",
+	"h1":"画面超级可爱，每一个细节都精致到让人惊叹。我可以根据自己的喜好选择不同的冰激凌口味和蛋糕底料，然后添加各种可爱的装饰和配料，打造出属于自己的甜品杰作。而且，游戏还提供了各种有趣的挑战和任务，提升我的甜品制作技能。我已经完全沉浸在这个甜品世界里了,观精致，口感看上去超级美味，简直让人垂涎欲滴！我可以自由搭配各种口味和装饰，打造出独一无二的冰激凌蛋糕，感觉就像是个小小的甜品大师！而且，游戏的操作也超级简单，让我这个游戏小白也能轻松上手。",
+	"h2":"真的太有趣啦！每次打开这个游戏，我就仿佛变成了阿Sue的专属化妆师，可以尽情发挥我的创意和想象力。游戏里的化妆品种类丰富多样，从眼影、口红到腮红、美甲，应有尽有，让我可以随心所欲地给阿Sue打扮。而且，游戏的操作超级简单，我可以轻松上手，快速掌握化妆技巧。看着阿Sue在我的巧手下变得越来越美，真的让我感到超级有成就感！我已经完全被这个游戏迷住了，每天都要玩上几局才过瘾呢！"
+    },
+    "敏捷篇": {
+        "img1": "static/picture/敏捷篇1.png",
+        "img2": "static/picture/敏捷篇2.png",
+        "title1": "疯狂小人战斗",
+        "title2": "双人碰碰车3D1.2",
+	"h1":"我之前很早的时候就玩过这款游戏，但是对它记忆有些模糊，看到之后就勾起了曾经美好的回忆，之前小不怎么记事，而且这款游戏总体讲还行，光听名字我就很喜欢，果然没让我失望，有很多角色，玩了一会忍不住想要来评论区和你们分享我的一些小技巧，1.按shift可以无敌，会出现一个红圈，但无法攻击2.角色头像下的百分比越高，被攻击时飞得越高3.地图中的手雷和地雷是可以捡起的，只要在雷旁边按J就可以捡起，再次按J可以丢出。或者你按住防御键，再按左或右前进键，就可以位移，期间无敌，但不能从高处往低处位移，自由穿梭人群的感觉真的很刺激，我说的这些你们可以试试。",
+	"h2":"碰碰车大家应该都玩过吧，可以说这是一个非常欢乐的游戏，无论是被撞的还是撞人的都觉得很有意思。而在这个游戏里那就有点不一样了，游戏里我们要在一定范围内与其他车子做殊死搏斗，最终的目的是要将除我们之外的所有车子撞到平台外面。这个游戏的玩法还是比较开放的，我们不仅可以选择自己车子的类型还能选择对手车子的类型，我个人是比较喜欢用压路机的，因为压路机实在是太强了，简直是无敌的存在。不过还是那句话，玩游戏嘛最重要的就是开心，怎么开心怎么来，毕竟咱又不比赛又不争什么，娱乐一下就很开心。希望大家都能在这个游戏里找到属于自己的快乐。"
+    },
+    "搞笑类": {
+        "img1": "static/picture/搞笑类1.png",
+        "img2": "static/picture/搞笑类2.png",
+        "title1": "巫婆造女孩中文版",
+        "title2": "爆笑变形金刚大结局",
+	"h1":"是一款非常经典可爱好玩的童年小游戏，我很小的时候就在玩了，抱着电脑一直玩，而巫婆造女孩也是非常有意思的而且还贴心的做了中文版，第一关，选择紫色的眼瞳，粉色和肉色的皮肤，玫红色的形象，S曲线药瓶的身材，红绿色的年龄，紫色药瓶的性别，花朵图案的装扮和兔子型的脸蛋再撒上魔法药粉就完成啦。小时候最喜欢玩这个了，哈哈哈哈对成年人刚刚好，谁能想到21的大朋友还在玩呢。笑死了！我就乱调下那个，哈哈，好家伙，这个长得可真美啊！",
+	"h2":"生喜欢变形金刚的不止我一个吧？忠实粉丝看到变形金刚怎么能错过，就冲着名字也要来看看。由衷觉得，这是真的很适合心情不好的人。搞笑的四格漫画，让严肃的变形金刚们变得幽默感十足，加上超赞的变身音效和逗趣的台词，每一个场景真的都太搞笑啦，机械狗跑到插座处放了泡尿，然后全球就停电了，哈哈哈哈这个我能笑一年！觉得作者还蛮有才的，用不一样的方式展现了变形金刚的另一面，必须点个赞啊。最后，来来来，小伙伴们来分享一下里面你觉得最搞笑的地方。"
+    },
+    "休闲类": {
+        "img1": "static/picture/休闲类1.png",
+        "img2": "static/picture/休闲类2.png",
+        "title1": "黄金矿工双人版",
+        "title2": "制作美味蛋糕",
+	"h1":"黄金矿工相信大家都玩过这款游戏吧，现在这款游戏来了双人版，这是一款休闲趣味游戏，所有的矿石宝物都是在地底下的只要是出现的宝物玩家都能是收集的只要是收集到手的宝物是不会让玩家上交的，所有的宝物都会属于玩家也可以使用宝物来换取其它收集宝物矿石的道具，每局开始时游戏都会有关卡目标分数，我们只需要要求达到超过目标分数就算通关，通关完成后可以用金币在商店换取相同价格的道具，比如有炸药、优质钻石、幸运草、石头收藏书等，我们可以在合理的金币范围内去购买一些道具，这样也可以更加有利于我们获取更多的黄金，我们需要注意收集宝物的时候是要注意限制的时间避免时间一到没有收集多少宝物，快来一起挑战看看吧！",
+	"h2":"这可真是童年的快乐，当时自己家还没有电脑，还是星期天去同学家玩，现在游戏还在，小时候的玩伴却走散了。混合奶油 哈哈哈哈哈哈哈哈 bug的王。"
+    },
+    "动作类": {
+        "img1": "static/picture/动作类1.png",
+        "img2": "static/picture/动作类2.png",
+        "title1": "死神VS火影3.3",
+        "title2": "拳皇wing1.85无敌版",
+	"h1":"死神VS火影这个款游戏是我非常喜欢的格斗游戏，里面不仅有我喜欢的各种动漫角色，而且战斗的技能也非常炫酷。都是我们之前看动漫时角色使用的技能，现在我们可以在这个游戏当中亲自使用了。每个角色都有自己独特的技能连招，想要成为格斗高手一定要熟悉这些技能。每次在玩这个游戏的时候能想起看动漫时那种热血，这样战斗起来就更加激动了。游戏中还有丰富的玩法模式，比如有单人模式和闯关模式。如果你的小伙伴无法陪你一起玩的话，那么你就可以尝试体验一下这些模式。",
+	"h2":"夸张的说这款游戏我已经接触了十年了，每次玩起里面的角色，小时候关于小霸王、街机的回忆就浮现出来。当时我们可以为了草稚和八神谁强的问题吵上半天，还很无聊的列出俩人的全部必杀技，谈如何克制对方的套路等等，确实，技术都是在那时候涨起来的。但是现在玩KOF的人是越来越 少了，很希望还能有人能一起聊聊，一起品鉴这款经典。霸王丸是lol里的亚索，，同意的点赞。。   试验方法、点开始后选择霸王丸《是觉醒的霸王丸，别忘了》，然后选择简易，在开打时先开怒气，然后单按u可以发现这技能是亚索的，还有单按i也可以发现这技能也是亚索的。真的好好玩！"
+    },
+    "儿童类": {
+        "img1": "static/picture/儿童类1.png",
+        "img2": "static/picture/儿童类2.png",
+        "title1": "朵拉农场",
+        "title2": "米奇的机器人实验",
+	"h1":"大家对朵拉都很熟悉了吧，虽然朵拉有点罗嗦，不过我想她应该是为了让我们能更好地理解游戏的操作吧！而且趁这个机会刚好可以练习一下英语的口语和听力，呵呵！不喜勿喷哈、、、、，游戏里面有三个场景，其实都不难的，像在仓库里，你要是听不懂英文，就听动物的叫声，像什么动物就点谁，我就这样过去了！还有猪场，我想大家一定都能过！最后就是鸡场了，大家一定要眼疾手快哦，这样鸡妈妈才能不伤心哦！希望我说的对大家有帮助，有用记得献花哈，各位亲！",
+	"h2":"很有意思的一款游戏啊，在游戏中我们可以发挥想象力，制作各种各样的机器人，是不是感觉很酷炫！！！制作的过程也是非常的有趣，各种配件度能自由选择，完全可以造出自己心里的模型样子哈哈哈哈哈哈。造完机器人后，我们还可以带它们去参加战斗，以我的经验来说，一般不要主动进攻，以防御为主，这样获胜的几率比较大。等敌方的机器人靠近了，我就一直疯狂的点攻击键就好了，我一般都是这样获胜的！！！大家也可以尝试一下！！"
+    },
+    "综合类": {
+        "img1": "static/picture/综合类1.png",
+        "img2": "static/picture/综合类2.png",
+        "title1": "原色中文版",
+        "title2": "炎龙传说2双龙版",
+	"h1":"这个游戏的玩法还挺新颖的，第一次玩这样的游戏还挺好玩的，关卡的设计独具匠心，别具一格，每个关卡都有不同的闯关方式，需要我们一关一关的去摸索，我玩了几关，感觉有点像解密游戏，一环扣一环，小人的颜色是可以变换的，不同的颜色还有不一样的功能，需要不停的切换配合才能通关，而且每个小人都有不同的技能，玩起来特别有趣，还好这款游戏是中文版的，不然就要错失这么好玩的游戏了,关前面攻略：先跳上去，别管冰块碎不碎，放好传送门，下来放另一个传送门，放冰块，换黄色通过传送门上去，前提：解锁冻土",
+	"h2":"《炎龙传说2》真是我童年的一部分！我还记得和朋友们在街机厅里挑战对战，每个角色都有自己独特的技能，玩起来真是过瘾。那种感觉简直无法用言语表达，就是一种怀旧和兴奋的混合体验。虽然现在游戏技术发展得更先进了，但是《炎龙传说2》那种经典的味道永远不会过时！无论是那些快速的连招还是角色之间的策略对决，游戏都展现了高水平的设计和深度。虽然画面现在看起来有点过时，但是当年那种紧张刺激的对战场面，真的是让人回味无穷。"
+    },
+    "益智类": {
+        "img1": "static/picture/益智类1.png",
+        "img2": "static/picture/益智类2.png",
+        "title1": "果蔬连连看",
+        "title2": "宠物连连看3.1",
+	"h1":"这款连连看的图标全部都是蔬菜和水果诶，实不相瞒就是被这些吸引进来的！规则还是熟悉的规则，点击两个相同的图案即可消除，但是连线转折不能超过两次并且不能有别的图案阻挡住，如果找到了相同图案消除呢，时间也会回弹一些哦，所以偶尔卡住找不到也没有关系，只要时间没有全溜走就好啦！前期我喜欢先找相邻的或者边缘的，中期感觉是最痛苦的，很难注意到，不过实在不行我们也可以按提示嘛，后期消除起来的速度就很快了，因为没有什么阻挡还是不难的，大家也快试试能玩到多高的级别吧",
+	"h2":"物连连看真是太可爱了！每次打开游戏，都会看到一些超级萌的小动物，它们眼神明亮、动作生动，简直让人忍不住心生喜爱。游戏规则很简单，只要消除相同的宠物对就能得分，但随着关卡的提升，会有更多的挑战和难度，需要更快的反应和更好的策略。音效也很温馨，每一次连接成功都会听到愉悦的声音，让整个游戏体验更加愉快,宠物连连看不仅仅是一款消磨时间的游戏，更是一种放松和享受的方式，特别适合在闲暇时刻玩上几局，舒缓压力，增添乐趣。"
+    },
+    "冒险类": {
+        "img1": "static/picture/冒险类1.png",
+        "img2": "static/picture/冒险类2.png",
+        "title1": "闪翼双星无敌版",
+        "title2": "王子公主回家记",
+	"h1":"2024年的今天再次看到这款游戏，突然泪目了，儿时的回忆一幕幕涌现，可惜只能是回忆了。不知道大伙是从什么时候开始接触这款游戏的，我是在2014年的时候开始玩的，到现在已经10年啦。依然记得游戏的剧情是从拯救闪开始的，然后闪和翼一路闯关，相互配合躲避陷阱，击败小怪最终逃亡成功。游戏的操作非常简单，经典的话来讲就是你上下左右我wasd，游戏中搭配了角色的专属技能，例如：二段跳、隐身、闪现等等，正因为技能的不同才显示出了游戏的配合能力。不过以前我玩的时候完全没想到这些，都是在羡慕小伙伴的技能哈哈哈。",
+	"h2":"我个人非常喜欢这个游戏。玩过很多类似的小游戏，但这个游戏真的很不一样，无论是画面还是玩法都很赞。在这个游戏中，你的任务是帮助王子和公主通过各种机关和陷阱，同时还要躲避敌对士兵的追捕。游戏里有各种各样神奇的道具，比如吃了草莓后，你可以在岩浆里自由行走而不会受伤；吃了橙子后，你可以穿过金属砖块；吃了苹果后，你就能爬树了。每个道具都有独特的效果，你需要在游戏中亲自尝试才能完全了解它们。最重要的是，你要尽可能多地收集游戏中的金币。只有当你收集到当前关卡所有的金币时，才能成功通过这个关卡。这个游戏充满了挑战和乐趣，我相信你们也一定会喜欢的。"
+    },
+    "模拟经营": {
+        "img1": "static/picture/模拟经营1.png",
+        "img2": "static/picture/模拟经营2.png",
+        "title1": "老爹甜品店中文版",
+        "title2": "老爹寿司店中文版",
+	"h1":"老爹的甜品店是一款模拟经营类型的游戏，个人感觉是老爹系列最简单的一款，相对于前几款来说这一作少了准备材料的过程，不过话说回来冰淇淋也不需要准备什么材料，都是放进机器里面进行搅拌，如果按照流程来是不会出什么错误的。游戏操作起来也没什么难度，前期我们老老实实的一个个接单，因为刚开始玩如果一下子接太多的话就会乱掉，等我们熟练了就能增加更多的机器，接更多的订单。当然这一作里面也是能够制作黑暗料理的，等我们的钱赚的比较多是时候，就可以装扮一下我们的店铺了，比如张贴海报购买一些辅助工具等等大家可以根据自己的喜好进行装扮。总的来说是一款很不错的模拟经营类型的游戏，喜欢这种类型游戏的小伙伴可以来尝试一下。",
+	"h2":"老爹寿司店，相信大家对于老爹系列的游戏都非常熟悉，在这个游戏中我们主要专注于寿司，在游戏刚开始的时候会有一段选择过程我们可以自定义人物的形象，简单的了解游戏的玩法。这个游戏的主要玩法都是寿司的制作，我们需要根据每一位顾客的要求，来制作每一个不一样的寿司，在游戏中会遇到各种千奇百怪的顾客，非常的真实哈哈哈。对于顾客的要求我们都要尽量的去满足，因为他们要是开心的话会给予我们另外的小费哦，非常有趣的一个设定。当然游戏中还有各种有趣好玩的小功能，大家可以一起来试一下，分享自己遇到好玩的顾客要求~"
+    },
+    "棋牌类": {
+        "img1": "static/picture/棋牌类1.png",
+        "img2": "static/picture/棋牌类2.png",
+        "title1": "中国象棋",
+        "title2": "奥维斗地主",
+	"h1":"中国象棋文化真的是博大精深哇！像我到现在都是一知半解的程度，不是特别精通。有可能大神来玩这款游戏会觉得太过简单，但是对于我等象棋小白来说刚刚好，甚至有点小难，哎嘿~建议和我一样不是特别懂象棋的小白可以先和电脑的人机对战，当然也可以邀请自己的小伙伴一起来玩~想当初想玩象棋的时候还要各种找场地~有时候还会忘记带棋子棋谱什么的，现在要是想玩象棋的时候就真的方便多啦~我个人觉得象棋还是越玩越有趣的！",
+	"h2":"斗地主是我会且唯一会的牌了，玩斗地主首先还是要先把牌面都挑好了，这个挑牌面的方法不一定就要按从小到大这样排序也可以按自己想出牌的心意来排序，不过在出牌的时候也要学会随机应变，有些时候该把牌拆开的还是要拆开不要死板的就想留着，如果有零散的牌那就先把散牌去掉，在牌还有很多的时候要从小牌开始打，后期牌少了就要从大的牌开始打啦。好玩小游戏！！！喜欢喜欢！！！"
+    },
+    "策略类": {
+        "img1": "static/picture/策略类1.png",
+        "img2": "static/picture/策略类2.png",
+        "title1": "皇城突袭1.13无敌版",
+        "title2": "超级米拉奇战记",
+	"h1":"作为一个塔防的游戏，它完完全全的把这类游戏的特点发挥了出来。游戏不论是作画风格还是机制都是非常棒的，每次在玩的时候都不会觉得腻，都能给我一些新的体验，毕竟他是塔防游戏，可以随意的布置，每一种布置方法都会影响游戏的走向，探索充满未知的一切才是游戏的乐趣所在。游戏本身的难度在非无敌版里面是比较大的，毕竟每一次的选择都有可能招致失败的结果，所以总会有不断是错的时候。而在这无敌版里面不用担心哦，里面的资金随意使用，甚至可以出现在游戏的初期就会有相当后期的装备！！前期击败对手跟切菜一样简单不费吹灰之力。而且英雄的加点也可以直接点满，让他们可以充分发挥战斗力。大家在这里爽快体验塔防游戏带来的快乐吧！！",
+	"h2":"超级好玩！爱玩，嘎嘎玩。打不可战胜的难度教你们怎么打哈，前面先不出兵，等剩下5秒的时候直接出兵，卡第二回合的金币，这样相当于出了2回合的兵，后期其实更好打，就屯钱，怎么说呢，也是卡时间，我可以一次性直接出16个大领主，囤2回合的钱，第三回合快到的剩下3秒直接出前面回合囤的钱，就出大领主，然后第三回合的钱也直接出大领主，这样你就相当于出了3回合的大领主。"
+    }
+};
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = getQueryParams();
+        let selectedTagsArray = [];
+        if (params.tags) {
+            selectedTagsArray = params.tags.split(',');
+            const selectedTagsContainer = document.getElementById('selected-tags');
+            selectedTagsContainer.innerHTML = selectedTagsArray.map(tag => `<div class="tag">${tag}</div>`).join('');
+        }
+      
+        if (selectedTagsArray.length > 0) {
+          const tag = selectedTagsArray[0];
+          if (tagInfo1[tag]) {
+             const info1 = tagInfo1[tag];
+             document.getElementById("g1").innerText = info1.title1;
+             document.getElementById("h1").innerText = info1.h1;
+             document.getElementById("g11").src = info1.img1;
+             document.getElementById("g2").innerText = info1.title2;
+             document.getElementById("h2").innerText = info1.h2;
+             document.getElementById("g22").src = info1.img2
+        }
+       }
+       if (selectedTagsArray.length > 0) {
+          const tag = selectedTagsArray[1];
+          if (tagInfo1[tag]) {
+             const info1 = tagInfo1[tag];
+             document.getElementById("g3").innerText = info1.title1;
+             document.getElementById("g33").src = info1.img1
+             document.getElementById("h3").innerText = info1.h1;
+             document.getElementById("g4").innerText = info1.title2;
+             document.getElementById("g44").src = info1.img2
+             document.getElementById("h4").innerText = info1.h2;
+        }
+       }
+       if (selectedTagsArray.length > 0) {
+          const tag = selectedTagsArray[2];
+          if (tagInfo1[tag]) {
+             const info1 = tagInfo1[tag];
+             document.getElementById("g5").innerText = info1.title1;
+             document.getElementById("h5").innerText = info1.h1;
+             document.getElementById("g55").src = info1.img1
+             document.getElementById("g6").innerText = info1.title2;
+             document.getElementById("g66").src = info1.img2
+             document.getElementById("h6").innerText = info1.h2;
+        }
+       }
+
+
+    });
+</script>
+
+
+<div id="main-content">
+    <a id="start-button" href="#">点击开始推荐</a>
+</div>
+<div id="loading-overlay">
+    <div class="loader"></div>
+    <p>正在为您推荐游戏...</p>
+</div>
+<script>
+    window.addEventListener('load', () => {
+         const rankingLink = document.getElementById('start-button');
+               
+         rankingLink.addEventListener('click', (event) => {
+        event.preventDefault(); // 阻止默认的链接行为，即不进行原本的页面跳转
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const tags = urlParams.get('tags');
+        var loadingOverlay = document.getElementById('loading-overlay');
+        loadingOverlay.style.display = 'flex';
+        setTimeout(function() {
+            
+            window.location.href = `recommend.html?tags=${encodeURIComponent(tags)}`; // 将此URL替换为目标网页的URL
+        }, 15000); 
+        
+    });
+    });
+
+
+   
+</script>
+
+
+
+
+
+
+</body>
+</html>
