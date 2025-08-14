@@ -2378,7 +2378,7 @@ body{
 .flower-bloom{
   position: absolute;
   bottom: calc(20px + var(--stem-h) - 80px); /* 80=花朵高度的一半(160/2) */
-  left: calc(50% + var(--flower-offset-x));  /* 新增：向右偏移 50px */
+  left: calc(80% + var(--flower-offset-x));  /* 新增：向右偏移 50px */
   transform: translateX(-50%);
   width: 160px;
   height: 160px;
