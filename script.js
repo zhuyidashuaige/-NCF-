@@ -555,6 +555,11 @@
       gap = 150; baseShiftX = 24;
     }
 
+    // 手机端整体向右偏移 50px
+    if(rect.width <= 480){
+      baseShiftX += 50;
+    }
+
     bloomCount++;
     let x, y = baseY;
 
