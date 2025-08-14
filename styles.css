@@ -2222,7 +2222,15 @@ body{
   transform: translate(-50%, -50%);
   pointer-events: none;
   --stem-h: 130px; /* 新增：茎的最终高度（与动画一致） */
-  --flower-offset-x: 50px; /* 新增：花朵相对茎的水平偏移（向右为正） */
+  --flower-offset-x: 24px; /* 调低：花朵相对茎的水平偏移，避免过度向右 */
+}
+
+/* 小屏适配：进一步收紧相对偏移 */
+@media (max-width: 768px){
+  .flower-growth{ --flower-offset-x: 16px; }
+}
+@media (max-width: 480px){
+  .flower-growth{ --flower-offset-x: 8px; }
 }
 
 /* 种子阶段 */
