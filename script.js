@@ -441,7 +441,7 @@
     // 我：中上速度匀速 + 自然划桨频率
     gameInterval = setInterval(() => {
       if(!raceFinished){
-        myPosition += 3.6;
+        myPosition += 1.6;
         myBoat.style.left = myPosition + 'px';
         if(myPosition >= finishLine){
           endGame(false);
@@ -544,18 +544,31 @@
     const rect = garden.getBoundingClientRect();
     const baseY = Math.min(rect.height * 0.58, rect.height - 120);
     const cx = rect.width / 2;
-    const shiftX = 50; // 向右偏移 50px
+
+    // 自适应水平间距与整体微偏移（小屏更紧凑）
+    let gap, baseShiftX;
+    if(rect.width <= 420){
+      gap = 90;  baseShiftX = 0;
+    }else if(rect.width <= 700){
+      gap = 120; baseShiftX = 16;
+    }else{
+      gap = 150; baseShiftX = 24;
+    }
 
     bloomCount++;
-    let x, y;
-    
+    let x, y = baseY;
+
     if(bloomCount === 1){
-      x = cx + shiftX; y = baseY;
+      x = cx + baseShiftX;
     }else if(bloomCount === 2){
-      x = cx - 160 + shiftX; y = baseY - 12;
+      x = cx - gap + baseShiftX; y = baseY - 10;
     }else if(bloomCount === 3){
-      x = cx + 160 + shiftX; y = baseY - 12;
+      x = cx + gap + baseShiftX; y = baseY - 10;
     }
+
+    // 防止越界：保证在花园范围内可见
+    const margin = 30;
+    x = Math.max(margin, Math.min(rect.width - margin, x));
 
     // 开始完整的生长过程
     startFlowerGrowth(flowerTypes[bloomCount-1], flowerNames[bloomCount-1], x, y);
