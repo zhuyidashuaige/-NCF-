@@ -2223,14 +2223,15 @@ body{
   pointer-events: none;
   --stem-h: 130px; /* 新增：茎的最终高度（与动画一致） */
   --flower-offset-x: 24px; /* 调低：花朵相对茎的水平偏移，避免过度向右 */
+  --flower-mobile-shift: 0px; /* 新增：手机端额外右移（仅作用于花头与光环） */
 }
 
-/* 小屏适配：进一步收紧相对偏移 */
+/* 小屏适配：进一步收紧相对偏移，并额外 +50px 花头右移（茎不动） */
 @media (max-width: 768px){
   .flower-growth{ --flower-offset-x: 16px; }
 }
 @media (max-width: 480px){
-  .flower-growth{ --flower-offset-x: 8px; }
+  .flower-growth{ --flower-offset-x: 8px; --flower-mobile-shift: 50px; }
 }
 
 /* 种子阶段 */
@@ -2378,7 +2379,7 @@ body{
 .flower-bloom{
   position: absolute;
   bottom: calc(20px + var(--stem-h) - 80px); /* 80=花朵高度的一半(160/2) */
-  left: calc(80px + var(--flower-offset-x));  /* 新增：向右偏移 50px */
+  left: calc(50% + var(--flower-offset-x) + var(--flower-mobile-shift, 0px));  /* 仅花朵右移 */
   transform: translateX(-50%);
   width: 160px;
   height: 160px;
@@ -2498,7 +2499,7 @@ body{
 .sparkle-ring{
   position: absolute;
   bottom: calc(20px + var(--stem-h) - 80px);
-  left: calc(50% + var(--flower-offset-x));  /* 新增：向右偏移 50px */
+  left: calc(50% + var(--flower-offset-x) + var(--flower-mobile-shift, 0px));  /* 仅光环右移 */
   transform: translateX(-50%);
   width: 180px;
   height: 180px;
@@ -2530,12 +2531,11 @@ body{
 /* 小屏适配 */
 @media (max-width:480px){
   .flower-growth{ width: 160px; height: 200px; --stem-h: 100px; }
-  .flower-bloom{ width: 120px; height: 120px; bottom: calc(20px + var(--stem-h) - 60px); left: calc(50% + var(--flower-offset-x)); }
-  .sparkle-ring{ width: 140px; height: 140px; bottom: calc(20px + var(--stem-h) - 60px); left: calc(50% + var(--flower-offset-x)); }
+  .flower-bloom{ width: 120px; height: 120px; bottom: calc(20px + var(--stem-h) - 60px); left: calc(50% + var(--flower-offset-x) + var(--flower-mobile-shift, 0px)); }
+  .sparkle-ring{ width: 140px; height: 140px; bottom: calc(20px + var(--stem-h) - 60px); left: calc(50% + var(--flower-offset-x) + var(--flower-mobile-shift, 0px)); }
   .stem{ width: 6px; }
   @keyframes stemGrow{
     0%{ height: 0; }
     100%{ height: 100px; }
   }
 }
-
